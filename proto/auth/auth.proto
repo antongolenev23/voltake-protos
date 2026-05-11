@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package auth.v1;
+
+option go_package = "github.com/antongolenev23/voltake-protos/gen/go/authpb/v1;authpb";
+
+service Auth {
+    rpc Register (RegisterRequest) returns (AuthResponse); 
+    rpc Login(LoginRequest) returns (AuthResponse);
+    rpc IsAdmin(IsAdminRequest) returns (IsAdminResponse);
+}
+
+message RegisterRequest {
+    string email = 1;
+    string password = 2;
+}
+
+message LoginRequest {
+    string email = 1;
+    string password = 2;
+}
+
+message AuthResponse {
+    string user_id = 1;
+    string token = 2;
+}
+
+message IsAdminRequest {
+    string user_id = 1;
+}
+
+message IsAdminResponse {
+    bool is_admin = 1;
+}
