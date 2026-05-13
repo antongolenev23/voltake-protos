@@ -4,7 +4,7 @@
 // 	protoc        v3.21.12
 // source: auth.proto
 
-package authpb
+package authv1
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -287,7 +287,7 @@ const file_auth_proto_rawDesc = "" +
 	"\x04Auth\x12;\n" +
 	"\bRegister\x12\x18.auth.v1.RegisterRequest\x1a\x15.auth.v1.AuthResponse\x125\n" +
 	"\x05Login\x12\x15.auth.v1.LoginRequest\x1a\x15.auth.v1.AuthResponse\x12<\n" +
-	"\aIsAdmin\x12\x17.auth.v1.IsAdminRequest\x1a\x18.auth.v1.IsAdminResponseBBZ@github.com/antongolenev23/voltake-protos/gen/go/authpb/v1;authpbb\x06proto3"
+	"\aIsAdmin\x12\x17.auth.v1.IsAdminRequest\x1a\x18.auth.v1.IsAdminResponseB@Z>github.com/antongolenev23/voltake-protos/gen/go/auth/v1;authv1b\x06proto3"
 
 var (
 	file_auth_proto_rawDescOnce sync.Once
