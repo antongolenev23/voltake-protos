@@ -5,17 +5,12 @@ package auth.v1;
 option go_package = "github.com/antongolenev23/voltake-protos/gen/go/auth/v1;authv1";
 
 service Auth {
-    rpc Register (RegisterRequest) returns (AuthResponse); 
-    rpc Login(LoginRequest) returns (AuthResponse);
+    rpc Register(Credentials) returns (AuthResponse); 
+    rpc Login(Credentials) returns (AuthResponse);
     rpc IsAdmin(IsAdminRequest) returns (IsAdminResponse);
 }
 
-message RegisterRequest {
-    string email = 1;
-    string password = 2;
-}
-
-message LoginRequest {
+message Credentials {
     string email = 1;
     string password = 2;
 }
