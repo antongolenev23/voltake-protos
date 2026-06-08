@@ -15,7 +15,5 @@ message Credentials {
 }
 
 message AuthResponse {
-    string user_id = 1;
     string token = 2;
-    bool is_admin = 3;
 }

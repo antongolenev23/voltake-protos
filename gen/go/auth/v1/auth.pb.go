@@ -75,9 +75,7 @@ func (x *Credentials) GetPassword() string {
 
 type AuthResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Token         string                 `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"`
-	IsAdmin       bool                   `protobuf:"varint,3,opt,name=is_admin,json=isAdmin,proto3" json:"is_admin,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -112,25 +110,11 @@ func (*AuthResponse) Descriptor() ([]byte, []int) {
 	return file_auth_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *AuthResponse) GetUserId() string {
-	if x != nil {
-		return x.UserId
-	}
-	return ""
-}
-
 func (x *AuthResponse) GetToken() string {
 	if x != nil {
 		return x.Token
 	}
 	return ""
-}
-
-func (x *AuthResponse) GetIsAdmin() bool {
-	if x != nil {
-		return x.IsAdmin
-	}
-	return false
 }
 
 var File_auth_proto protoreflect.FileDescriptor
@@ -141,11 +125,9 @@ const file_auth_proto_rawDesc = "" +
 	"auth.proto\x12\aauth.v1\"?\n" +
 	"\vCredentials\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"X\n" +
-	"\fAuthResponse\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x14\n" +
-	"\x05token\x18\x02 \x01(\tR\x05token\x12\x19\n" +
-	"\bis_admin\x18\x03 \x01(\bR\aisAdmin2u\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"$\n" +
+	"\fAuthResponse\x12\x14\n" +
+	"\x05token\x18\x02 \x01(\tR\x05token2u\n" +
 	"\x04Auth\x127\n" +
 	"\bRegister\x12\x14.auth.v1.Credentials\x1a\x15.auth.v1.AuthResponse\x124\n" +
 	"\x05Login\x12\x14.auth.v1.Credentials\x1a\x15.auth.v1.AuthResponseB@Z>github.com/antongolenev23/voltake-protos/gen/go/auth/v1;authv1b\x06proto3"
