@@ -7,7 +7,6 @@ option go_package = "github.com/antongolenev23/voltake-protos/gen/go/auth/v1;aut
 service Auth {
     rpc Register(Credentials) returns (AuthResponse); 
     rpc Login(Credentials) returns (AuthResponse);
-    rpc IsAdmin(IsAdminRequest) returns (IsAdminResponse);
 }
 
 message Credentials {
@@ -18,12 +17,5 @@ message Credentials {
 message AuthResponse {
     string user_id = 1;
     string token = 2;
-}
-
-message IsAdminRequest {
-    string user_id = 1;
-}
-
-message IsAdminResponse {
-    bool is_admin = 1;
+    bool is_admin = 3;
 }

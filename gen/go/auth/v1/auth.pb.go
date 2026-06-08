@@ -77,6 +77,7 @@ type AuthResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Token         string                 `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"`
+	IsAdmin       bool                   `protobuf:"varint,3,opt,name=is_admin,json=isAdmin,proto3" json:"is_admin,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -125,88 +126,7 @@ func (x *AuthResponse) GetToken() string {
 	return ""
 }
 
-type IsAdminRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *IsAdminRequest) Reset() {
-	*x = IsAdminRequest{}
-	mi := &file_auth_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *IsAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*IsAdminRequest) ProtoMessage() {}
-
-func (x *IsAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use IsAdminRequest.ProtoReflect.Descriptor instead.
-func (*IsAdminRequest) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *IsAdminRequest) GetUserId() string {
-	if x != nil {
-		return x.UserId
-	}
-	return ""
-}
-
-type IsAdminResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	IsAdmin       bool                   `protobuf:"varint,1,opt,name=is_admin,json=isAdmin,proto3" json:"is_admin,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *IsAdminResponse) Reset() {
-	*x = IsAdminResponse{}
-	mi := &file_auth_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *IsAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*IsAdminResponse) ProtoMessage() {}
-
-func (x *IsAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use IsAdminResponse.ProtoReflect.Descriptor instead.
-func (*IsAdminResponse) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *IsAdminResponse) GetIsAdmin() bool {
+func (x *AuthResponse) GetIsAdmin() bool {
 	if x != nil {
 		return x.IsAdmin
 	}
@@ -221,18 +141,14 @@ const file_auth_proto_rawDesc = "" +
 	"auth.proto\x12\aauth.v1\"?\n" +
 	"\vCredentials\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"=\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"X\n" +
 	"\fAuthResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x14\n" +
-	"\x05token\x18\x02 \x01(\tR\x05token\")\n" +
-	"\x0eIsAdminRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\tR\x06userId\",\n" +
-	"\x0fIsAdminResponse\x12\x19\n" +
-	"\bis_admin\x18\x01 \x01(\bR\aisAdmin2\xb3\x01\n" +
+	"\x05token\x18\x02 \x01(\tR\x05token\x12\x19\n" +
+	"\bis_admin\x18\x03 \x01(\bR\aisAdmin2u\n" +
 	"\x04Auth\x127\n" +
 	"\bRegister\x12\x14.auth.v1.Credentials\x1a\x15.auth.v1.AuthResponse\x124\n" +
-	"\x05Login\x12\x14.auth.v1.Credentials\x1a\x15.auth.v1.AuthResponse\x12<\n" +
-	"\aIsAdmin\x12\x17.auth.v1.IsAdminRequest\x1a\x18.auth.v1.IsAdminResponseB@Z>github.com/antongolenev23/voltake-protos/gen/go/auth/v1;authv1b\x06proto3"
+	"\x05Login\x12\x14.auth.v1.Credentials\x1a\x15.auth.v1.AuthResponseB@Z>github.com/antongolenev23/voltake-protos/gen/go/auth/v1;authv1b\x06proto3"
 
 var (
 	file_auth_proto_rawDescOnce sync.Once
@@ -246,22 +162,18 @@ func file_auth_proto_rawDescGZIP() []byte {
 	return file_auth_proto_rawDescData
 }
 
-var file_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_auth_proto_goTypes = []any{
-	(*Credentials)(nil),     // 0: auth.v1.Credentials
-	(*AuthResponse)(nil),    // 1: auth.v1.AuthResponse
-	(*IsAdminRequest)(nil),  // 2: auth.v1.IsAdminRequest
-	(*IsAdminResponse)(nil), // 3: auth.v1.IsAdminResponse
+	(*Credentials)(nil),  // 0: auth.v1.Credentials
+	(*AuthResponse)(nil), // 1: auth.v1.AuthResponse
 }
 var file_auth_proto_depIdxs = []int32{
 	0, // 0: auth.v1.Auth.Register:input_type -> auth.v1.Credentials
 	0, // 1: auth.v1.Auth.Login:input_type -> auth.v1.Credentials
-	2, // 2: auth.v1.Auth.IsAdmin:input_type -> auth.v1.IsAdminRequest
-	1, // 3: auth.v1.Auth.Register:output_type -> auth.v1.AuthResponse
-	1, // 4: auth.v1.Auth.Login:output_type -> auth.v1.AuthResponse
-	3, // 5: auth.v1.Auth.IsAdmin:output_type -> auth.v1.IsAdminResponse
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
+	1, // 2: auth.v1.Auth.Register:output_type -> auth.v1.AuthResponse
+	1, // 3: auth.v1.Auth.Login:output_type -> auth.v1.AuthResponse
+	2, // [2:4] is the sub-list for method output_type
+	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -278,7 +190,7 @@ func file_auth_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_proto_rawDesc), len(file_auth_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
